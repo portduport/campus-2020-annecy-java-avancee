@@ -2,7 +2,6 @@ package com.campus2020.projetJavaAvancee.controller;
  
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.campus2020.projetJavaAvancee.form.CarForm;
 import com.campus2020.projetJavaAvancee.model.Car;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     private static List<Car> cars = new ArrayList<Car>();
- 
+
     static {
         cars.add(new Car("Audi", "Q7"));
         cars.add(new Car("BMW", "325i"));
@@ -25,7 +24,7 @@ public class MainController {
 
     @Value("${welcome.message}")
     private String message;
- 
+
     @Value("${error.message}")
     private String errorMessage;
 
@@ -35,9 +34,9 @@ public class MainController {
      */
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
- 
+
         model.addAttribute("message", message);
- 
+
         return "index";
     }
 
@@ -47,9 +46,9 @@ public class MainController {
      */
     @RequestMapping(value = { "/carList" }, method = RequestMethod.GET)
     public String carList(Model model) {
- 
+
         model.addAttribute("cars", cars);
- 
+
         return "carList";
     }
 
@@ -59,10 +58,10 @@ public class MainController {
      */
     @RequestMapping(value = { "/addCar" }, method = RequestMethod.GET)
     public String showAddCarPage(Model modele) {
- 
+
         CarForm carForm = new CarForm();
         modele.addAttribute("carForm", carForm);
- 
+
         return "addCar";
     }
 
@@ -76,15 +75,15 @@ public class MainController {
             @ModelAttribute("carForm") CarForm carForm) {
         String brand = carForm.getBrand();
         String model = carForm.getModel();
- 
+
         if (brand != null && brand.length() > 0 //
                 && model != null && model.length() > 0) {
             Car newCar = new Car(brand, model);
             cars.add(newCar);
- 
+
             return "redirect:/carList";
         }
- 
+
         modele.addAttribute("errorMessage", errorMessage);
         return "addCar";
     }
