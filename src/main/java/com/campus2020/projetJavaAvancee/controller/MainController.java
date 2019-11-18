@@ -8,9 +8,7 @@ import com.campus2020.projetJavaAvancee.model.Car;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -53,38 +51,38 @@ public class MainController {
     }
 
     /**
-     * @param modele
+     * @param model
      * @return
      */
     @RequestMapping(value = { "/addCar" }, method = RequestMethod.GET)
-    public String showAddCarPage(Model modele) {
+    public String showAddCarPage(Model model) {
 
         CarForm carForm = new CarForm();
-        modele.addAttribute("carForm", carForm);
+        model.addAttribute("carForm", carForm);
 
         return "addCar";
     }
 
     /**
-     * @param modele
+     * @param model
      * @param carForm
      * @return
      */
     @RequestMapping(value = { "/addCar" }, method = RequestMethod.POST)
-    public String saveCar(Model modele, //
-            @ModelAttribute("carForm") CarForm carForm) {
+    public String saveCar(Model model, //
+                          @ModelAttribute("carForm") CarForm carForm) {
         String brand = carForm.getBrand();
-        String model = carForm.getModel();
+        String version = carForm.getVersion();
 
         if (brand != null && brand.length() > 0 //
-                && model != null && model.length() > 0) {
-            Car newCar = new Car(brand, model);
+                && version != null && version.length() > 0) {
+            Car newCar = new Car(brand, version);
             cars.add(newCar);
 
             return "redirect:/carList";
         }
 
-        modele.addAttribute("errorMessage", errorMessage);
+        model.addAttribute("errorMessage", errorMessage);
         return "addCar";
     }
  

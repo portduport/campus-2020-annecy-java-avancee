@@ -7,7 +7,7 @@ public class CarForm {
  
 	private String id;
     private String brand;
-    private String model;
+    private String version;
 
     public String getId() {
     	return id;
@@ -25,12 +25,12 @@ public class CarForm {
         this.brand = brand;
     }
  
-    public String getModel() {
-        return model;
+    public String getVersion() {
+        return version;
     }
  
-    public void setModel(String model) {
-        this.model = model;
+    public void setVersion(String version) {
+        this.version = version;
     }
     
 }

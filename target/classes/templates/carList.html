@@ -15,13 +15,13 @@
                 <tr>
                     <th>Id</th>
                     <th>Brand</th>
-                    <th>Model</th>
+                    <th>Version</th>
                     <th>Actions</th>
                 </tr>
                 <tr th:each="car : ${cars}">
                     <td style="text-align: center" th:utext="${car.id}">...</td>
                     <td style="text-align: center" th:utext="${car.brand}">...</td>
-                    <td style="text-align: center" th:utext="${car.model}">...</td>
+                    <td style="text-align: center" th:utext="${car.version}">...</td>
                     <td style="text-align: center"><a href="">Details </a> | <a href="">Edit </a> | <a href="">Delete</a></td>
                 </tr>
             </table>

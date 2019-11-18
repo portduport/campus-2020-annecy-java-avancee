@@ -12,16 +12,16 @@ public class Car {
      */
 	private String id;
     private String brand;
-    private String model;
+    private String version;
  
     public Car() {
  
     }
  
-	public Car(String brand, String model) {
+	public Car(String brand, String version) {
 		this.id = UUID.randomUUID().toString();
         this.brand = brand;
-        this.model = model;
+        this.version = version;
     }
 	
 	public String getId() {
@@ -40,12 +40,12 @@ public class Car {
         this.brand = brand;
     }
  
-    public String getModel() {
-        return model;
+    public String getVersion() {
+        return version;
     }
  
-    public void setModel(String model) {
-        this.model = model;
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Car {
         return "Car{" +
                 "id= " + id +
                 ", brand= " + brand + '\'' +
-                ", model= " + model + '}';
+                ", version= " + version + '}';
     }
  
 }
