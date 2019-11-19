@@ -13,29 +13,29 @@ public class CarController {
     @Autowired
     private CarDao carDao;
 
-    @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public List<Car> listCars(){
+    @GetMapping("/cars")
+    public List<Car> listCars() {
         return carDao.findAll();
     }
 
-    @RequestMapping(value = "/cars/{id}", method = RequestMethod.GET)
-    public Car showCar(@PathVariable String id){
-        return carDao.findById(id);
-    }
-
-    @RequestMapping(value = "cars/create", method = RequestMethod.POST)
-    public Car saveCar(@RequestBody Car car){
+    @PostMapping("/cars/")
+    public Car saveCar(@RequestBody Car car) {
         return carDao.save(car);
     }
 
-    @RequestMapping(value = "/cars/update/{id}", method = RequestMethod.PUT)
-    public Car updateCar(@PathVariable String id){
-        Car car = carDao.findById(id);
+    @GetMapping("/cars/{id}")
+    public Car showCar(@PathVariable String id) {
+        return carDao.findById(id);
+    }
+
+    @PutMapping("/cars/{id}")
+    public Car updateCar(@PathVariable String id, @RequestBody Car car) {
+        car.setId(id);
         return carDao.update(car);
     }
 
-    @RequestMapping(value = "/cars/delete/{id}", method = RequestMethod.DELETE)
-    public void deleteCar(@PathVariable String id){
+    @DeleteMapping("/cars/{id}")
+    public void deleteCar(@PathVariable String id) {
         carDao.deleteById(id);
     }
 

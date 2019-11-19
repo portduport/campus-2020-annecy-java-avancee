@@ -8,8 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 
 @Repository
-public class CarDaoImpl implements CarDao{
+public class CarDaoImpl implements CarDao {
     private static List<Car> cars = new ArrayList<Car>();
+
     static {
         cars.add(new Car("Audi", "Q7"));
         cars.add(new Car("BMW", "325i"));
@@ -22,8 +23,8 @@ public class CarDaoImpl implements CarDao{
 
     @Override
     public Car findById(String id) {
-        for (Car car : cars){
-            if(car.getId().equals(id)){
+        for (Car car : cars) {
+            if (car.getId().equals(id)) {
                 return car;
             }
         }
@@ -38,16 +39,28 @@ public class CarDaoImpl implements CarDao{
 
     @Override
     public Car update(Car car) {
-        cars.add(car);
-        return car;
+        Iterator itr = cars.iterator();
+        while (itr.hasNext()) {
+            Car currentCar = (Car) itr.next();
+            if (currentCar.getId().equals(car.getId())) {
+                if (car.getBrand() != null) {
+                    currentCar.setBrand(car.getBrand());
+                }
+                if (car.getVersion() != null) {
+                    currentCar.setVersion(car.getVersion());
+                }
+            }
+            return currentCar;
+        }
+        return null;
     }
 
     @Override
     public void deleteById(String id) {
         Iterator itr = cars.iterator();
-        while(itr.hasNext()){
-            Car car = (Car)itr.next();
-            if(car.getId().equals(id)){
+        while (itr.hasNext()) {
+            Car car = (Car) itr.next();
+            if (car.getId().equals(id)) {
                 itr.remove();
             }
         }
