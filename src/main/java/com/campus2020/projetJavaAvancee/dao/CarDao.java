@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CarDao {
     public List<Car> findAll();
-    public Car findById(String id);
+    public Car findById(int id);
     public Car save(Car car);
     public Car update(Car car);
-    public void deleteById(String id);
+    public void deleteById(int id);
 }

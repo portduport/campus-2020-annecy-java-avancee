@@ -22,9 +22,9 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public Car findById(String id) {
+    public Car findById(int id) {
         for (Car car : cars) {
-            if (car.getId().equals(id)) {
+            if (car.getId() == id) {
                 return car;
             }
         }
@@ -39,28 +39,27 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public Car update(Car car) {
-        Iterator itr = cars.iterator();
-        while (itr.hasNext()) {
-            Car currentCar = (Car) itr.next();
-            if (currentCar.getId().equals(car.getId())) {
+        Car currentCar = this.findById(car.getId());
+
+            if (currentCar.getId() == car.getId()) {
                 if (car.getBrand() != null) {
                     currentCar.setBrand(car.getBrand());
                 }
                 if (car.getVersion() != null) {
                     currentCar.setVersion(car.getVersion());
                 }
+                return currentCar;
             }
-            return currentCar;
+            return null;
         }
-        return null;
-    }
+
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(int id) {
         Iterator itr = cars.iterator();
         while (itr.hasNext()) {
             Car car = (Car) itr.next();
-            if (car.getId().equals(id)) {
+            if (car.getId() == id) {
                 itr.remove();
             }
         }
