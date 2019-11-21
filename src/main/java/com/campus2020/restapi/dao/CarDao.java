@@ -1,6 +1,7 @@
 package com.campus2020.restapi.dao;
 
 import com.campus2020.restapi.model.Car;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 import java.util.List;
 
