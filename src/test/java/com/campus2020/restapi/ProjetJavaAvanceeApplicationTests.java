@@ -1,4 +1,4 @@
-package com.campus2020.projetJavaAvancee;
+package com.campus2020.restapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

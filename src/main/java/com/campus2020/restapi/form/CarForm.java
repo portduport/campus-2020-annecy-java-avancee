@@ -1,4 +1,4 @@
-package com.campus2020.projetJavaAvancee.form;
+package com.campus2020.restapi.form;
 
 /**
  *

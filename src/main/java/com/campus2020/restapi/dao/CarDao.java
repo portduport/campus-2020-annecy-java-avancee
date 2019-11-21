@@ -1,6 +1,6 @@
-package com.campus2020.projetJavaAvancee.dao;
+package com.campus2020.restapi.dao;
 
-import com.campus2020.projetJavaAvancee.model.Car;
+import com.campus2020.restapi.model.Car;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
-package com.campus2020.projetJavaAvancee.model;
+package com.campus2020.restapi.model;
 
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 

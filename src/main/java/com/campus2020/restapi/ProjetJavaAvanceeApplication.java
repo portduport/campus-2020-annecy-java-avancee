@@ -1,4 +1,4 @@
-package com.campus2020.projetJavaAvancee;
+package com.campus2020.restapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

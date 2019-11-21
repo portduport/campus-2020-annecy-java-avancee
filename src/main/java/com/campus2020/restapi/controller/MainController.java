@@ -1,10 +1,10 @@
-package com.campus2020.projetJavaAvancee.controller;
+package com.campus2020.restapi.controller;
  
 import java.util.ArrayList;
 import java.util.List;
 
-import com.campus2020.projetJavaAvancee.form.CarForm;
-import com.campus2020.projetJavaAvancee.model.Car;
+import com.campus2020.restapi.form.CarForm;
+import com.campus2020.restapi.model.Car;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

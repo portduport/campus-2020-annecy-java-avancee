@@ -1,6 +1,6 @@
-package com.campus2020.projetJavaAvancee.dao;
+package com.campus2020.restapi.dao;
 
-import com.campus2020.projetJavaAvancee.model.Car;
+import com.campus2020.restapi.model.Car;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -40,7 +40,6 @@ public class CarDaoImpl implements CarDao {
     @Override
     public Car update(Car car) {
         Car currentCar = this.findById(car.getId());
-
             if (currentCar.getId() == car.getId()) {
                 if (car.getBrand() != null) {
                     currentCar.setBrand(car.getBrand());

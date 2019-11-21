@@ -1,9 +1,10 @@
-package com.campus2020.projetJavaAvancee.web.controller;
+package com.campus2020.restapi.web.controller;
 
-import com.campus2020.projetJavaAvancee.exception.ResourceNotFoundException;
-import com.campus2020.projetJavaAvancee.model.Car;
-import com.campus2020.projetJavaAvancee.repository.CarRepository;
+import com.campus2020.restapi.exception.ResourceNotFoundException;
+import com.campus2020.restapi.model.Car;
+import com.campus2020.restapi.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class CarController {
         return carRepository.findAll();
     }
 
-    @PostMapping("/cars/")
+    @PostMapping(value = "/cars")
     public Car saveCar(@RequestBody Car car) {
         return carRepository.save(car);
     }
@@ -33,12 +34,15 @@ public class CarController {
 
     @PutMapping("/cars/{id}")
     public Car updateCar(@PathVariable int id, @RequestBody Car carDetails) {
-        Car car = carRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Car", "id", id));
-        car.setBrand(carDetails.getBrand());
-        car.setVersion(carDetails.getVersion());
+        Car currentCar = this.showCar(id);
 
-        return carRepository.save(car);
+        if (carDetails.getBrand() != null) {
+            currentCar.setBrand(carDetails.getBrand());
+        }
+        if (carDetails.getVersion() != null) {
+            currentCar.setVersion(carDetails.getVersion());
+        }
+        return carRepository.save(currentCar);
     }
 
     @DeleteMapping("/cars/{id}")
