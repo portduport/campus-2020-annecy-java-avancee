@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "cars")
+//@Table(name = "cars")
 
 public class Car {
     /**
